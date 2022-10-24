@@ -2,274 +2,281 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="shortcut icon" type="image/png" href="/icon.png" />
 
     <link
-      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
     />
-
-    <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-    crossorigin="anonymous"
-  />
-  <!-- font awesome link -->
-  <script
-    src="https://kit.fontawesome.com/45758e0c8b.js"
-    crossorigin="anonymous"
-  ></script>
-
-
-    <link rel="stylesheet" href="style.css" />
+    <!-- font awesome link -->
+    <script
+      src="https://kit.fontawesome.com/45758e0c8b.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./stylesheet.css" />
     <title>Bankist</title>
   </head>
   <body>
-
-    <header>
-      <div class="row">
-        <div class="col-5">
-          <p class="welcome">Log in to get started</p>
-        </div>
-        <div class="col-4">
-          <img src="logo.png" alt="Logo" class="logo" />
-        </div>
-
-        <div class="col-1 hamsburger">
-          <i class="fa-solid fa-bars-staggered ham--icon"></i>
-          <span class="icon__dismiss hidden">x</span>
-        </div>
-
-        <div class="col-3 form--details">
-          <div class="row detail--row">
-            <div class="col-sm-4 login__url ">
-              <a href="#log__in">Login</a>
-            </div>
-
-            <div class="col-sm-4" id="signUp__url">
-              <a href="#sign__up">Sign up</a>
-            </div>
-
-           
-
+    <div class="container">
+      <header>
+        <div class="row">
+          <div class="col-5">
+            <p class="welcome">Log in to get started</p>
           </div>
-        </div>
-      </header>
+          <div class="col-4">
+            <img src="logo.png" alt="Logo" class="logo" />
+          </div>
 
-        <!-- signing up -->
-        <div id="sign__up" class="hidden">
-          <span class="icon">x</span>
+          <div class="col-1 hamsburger">
+            <i class="fa-solid fa-bars-staggered ham--icon all__icon"></i>
+            <span class="icon__dismiss hidden all__icon">x</span>
+          </div>
 
-          <form class="login my-3">
-            <div class="row my-3">
-              <div class="col-sm-2">
-                <label for="Name">Name: </label>
+          <div class="col-3 form--details">
+            <div class="row detail--row">
+              <div class="col-sm-4 login__url ">
+                <a href="#log__in user__detail">Login</a>
               </div>
 
-              <div class="col-sm-10">
-                <input
-                  type="text"
-                  placeholder="input your name"
-                  class="  input__space input__signUp--name"
-                  required
-                />
+              <div class="col-sm-4" id="signUp__url">
+                <a href="#sign__up user__detail">Sign up</a>
               </div>
+
+             
+
             </div>
+          </div>
+        </header>
 
-            <!-- Input password -->
-            <div class="row my-3">
-              <div class="col-sm-2">
-                <label for="Password">Password: </label>
+          <!-- signing up -->
+          <div id="sign__up" class="hidden">
+            <span class="icon all__icon">x</span>
+
+            <form class="login my-3">
+              <div class="row my-3">
+                <div class="col-sm-2">
+                  <label for="Name">Name: </label>
+                </div>
+
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    placeholder="input your name"
+                    class="login__input  input__space input__signUp--name"
+                    required
+                  />
+                </div>
               </div>
 
-              <div class="col-sm-10">
-                <input
-                  type="text"
-                  placeholder="A maximum of 4 characters"
-                  maxlength="4"
-                  class="input__space input__signUp"
-                />
-              </div>
-            </div>
-            <!-- Confirm password -->
-            <div class="row my-3">
-              <div class="col-sm-2">
-                <label for="Password">verification: </label>
-              </div>
+              <!-- Input password -->
+              <div class="row my-3">
+                <div class="col-sm-2">
+                  <label for="Password">Password: </label>
+                </div>
 
-              <div class="col-sm-10">
-                <input
-                  type="text"
-                  placeholder="verify password"
-                  maxlength="4"
-                  class="input__space input__verifysignUp"
-                /> 
-               <p><em class="error__message hidden"
-                  >⚠ password does not match</p> 
-                </em>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    placeholder="A maximum of 4 characters"
+                    maxlength="4"
+                    class="login__input  input__space input__signUp"
+                  />
+                </div>
               </div>
-            </div>
+              <!-- Confirm password -->
+              <div class="row my-3">
+                <div class="col-sm-2">
+                  <label for="Password">verification: </label>
+                </div>
 
-            <button class=" signUp__btn px-4 py-2 my-3 form__btn">
-              Sign up
-            </button>
-          </form>
-        </div>
-
-        <!-- Login -->
-        <div id="log__in" class="hidden">
-          <span class="icon">x</span>
-          <form class="login my-3">
-            <div class="row my-3">
-              <div class="col-sm-1">
-                <label for="Name">Id: </label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    placeholder="verify password"
+                    maxlength="4"
+                    class="login__input  input__space input__verifysignUp"
+                  /> 
+                 <p><em class="error__message hidden"
+                    >⚠ password does not match</p> 
+                  </em>
+                </div>
               </div>
 
-              <div class="col-sm-11">
-                <input
-                  type="text"
-                  placeholder="user"
-                  class="login__input login__input--user input__space"
-                />
+              <button class="signUp__btn px-4 py-2 my-3" id="details__btn">
+                Sign up
+              </button>
+            </form>
+          </div>
+
+          <!-- Login -->
+          <div id="log__in" class="hidden">
+            <span class="icon all__icon">x</span>
+            <form class="login my-3">
+              <div class="row my-3">
+                <div class="col-sm-1">
+                  <label for="Name">Id: </label>
+                </div>
+
+                <div class="col-sm-11">
+                  <input
+                    type="text"
+                    placeholder="user"
+                    class="login__input login__input--user input__space"
+                  />
+                </div>
               </div>
-            </div>
 
-            <!-- Input password -->
-            <div class="row my-3">
-              <div class="col-sm-1">
-                <label for="Password">Pin: </label>
+              <!-- Input password -->
+              <div class="row my-3">
+                <div class="col-sm-1">
+                  <label for="Password">Pin: </label>
+                </div>
+
+                <div class="col-sm-11">
+                  <input
+                    type="text"
+                    placeholder="pin"
+                    maxlength="4"
+                    class="login__input login__input--pin input__space" 
+                  />
+                </div>
               </div>
+              <p><em class="error__message hidden "
+                >⚠ Account does not exist</p> 
+              </em>
 
-              <div class="col-sm-11">
-                <input
-                  type="text"
-                  placeholder="pin"
-                  maxlength="4"
-                  class="input__space login__input--pin"
-                />
-              </div>
-            </div>
-            <button class="login__btn login--btn signUp__btn px-4 py-2 my-3 form__btn">
-              Login
-            </button>
-          </form>
-        </div>
-      </div>
-    
-      <div>
-
-
-    <!-- TOP NAVIGATION -->
-    <!-- <nav>
-      <p class="welcome" >Log in to get started</p>
-      <img src="logo.png" alt="Logo" class="logo" />
-      <form class="login">
-        <input
-          type="text"
-          placeholder="user"
-          class="login__input login__input--user"
-        /> -->
-        <!-- In practice, use type="password" -->
-        <!-- <input
-          type="text"
-          placeholder="PIN"
-          maxlength="4"
-          class="
-        />
-        <button class="login__btn">&rarr;</button>
-      </form>
-    </nav> -->
-
-    <main class="app hidden">
-      <!-- BALANCE -->
-      <div class="balance">
+              <button class="login__btn login--btn signUp__btn px-4 py-2 my-3 form__btn" id="details__btn">
+                Login
+              </button>
+            </form>
+          </div>
+        
+      <main class="app my-3">
         <div>
-          <p class="balance__label">Current balance</p>
-          <p class="balance__date">
-            As of <span class="date">05/03/2037</span>
-          </p>
-        </div>
-        <p class="balance__value">0000€</p>
-      </div>
+          <div class="row balance">
+            <div class="col-8 ">
+                  <p class="balance__label ">Current balance</p>
+                  <p class="balance__date ">
+                    As of <span class="date">05/03/2037</span>
+                  </p>
+                </div>
 
-      <!-- MOVEMENTS -->
-      <div class="movements">
-        <div class="movements__row">
-          <div class="movements__type movements__type--deposit">2 deposit</div>
-          <div class="movements__date">3 days ago</div>
-          <div class="movements__value">4 000€</div>
-        </div>
-        <div class="movements__row">
-          <div class="movements__type movements__type--withdrawal">
-            1 withdrawal
+                <div class="col-4 ">
+                  <p class="balance__value bal__text">0000€</p>
+                </div>
+              </div>
           </div>
-          <div class="movements__date">24/01/2037</div>
-          <div class="movements__value">-378€</div>
-        </div>
+
+          <div class="row">
+            <div class="col-sm-7 ">
+              <div class="movements space__occupied">
+                <div class="row movements__row">
+                  <div class="col-4 movements__type movements__type--deposit">2 deposit</div>
+                  <div class="col-4 movements__date">3 days ago</div>
+                  <div class="col-4 movements__value">4 000€</div>
+                </div>
+
+                <div class="row movements__row">
+                  <div class="col-4 movements__type movements__type--withdrawal">
+                    1 withdrawal
+                  </div>
+                  <div class="col-4 movements__date">24/01/2037</div>
+                  <div class="col-4 movements__value">-378€</div>
+                </div>
+              
+            </div>
+                <!-- SUMMARY -->
+      <div class="row summary my-4">
+        <p class="col-1  summary__label">In</p>
+        <p class="col-2 summary__value summary__value--in pr-2">0000€</p>
+        <p class="col-1  summary__label">Out</p>
+        <p class="col-2 summary__value summary__value--out">0000€</p>
+        <p class="col-2  summary__label">Interest</p>
+        <p class="col-2 summary__value summary__value--interest">0000€</p>
+        <button class="col-2 btn--sort">&downarrow; SORT</button>
       </div>
 
-      <!-- SUMMARY -->
-      <div class="summary">
-        <p class="summary__label">In</p>
-        <p class="summary__value summary__value--in">0000€</p>
-        <p class="summary__label">Out</p>
-        <p class="summary__value summary__value--out">0000€</p>
-        <p class="summary__label">Interest</p>
-        <p class="summary__value summary__value--interest">0000€</p>
-        <button class="btn--sort">&downarrow; SORT</button>
-      </div>
+          </div>
 
-      <!-- OPERATION: TRANSFERS -->
-      <div class="operation operation--transfer">
-        <h2>Transfer money</h2>
-        <form class="form form--transfer">
-          <input type="text" class="form__input form__input--to" />
-          <input type="number" class="form__input form__input--amount" />
-          <button class="form__btn form__btn--transfer">&rarr;</button>
-          <label class="form__label">Transfer to</label>
-          <label class="form__label">Amount</label>
-        </form>
-      </div>
+            <div class="col-sm-5 space__occupied ">
+              <div class="operation operation--transfer mb-4">
+                <h2>Transfer money</h2>
+                <form class="form form--transfer">
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <input type="text" class="form__input form__input--to" />
+                      <label class="form__label">Transfer to</label>
+                    </div>
+                    <div class="col-sm-5">
+                      <input type="number" class="form__input form__input--amount" />
+                      <label class="form__label">Amount</label>
+                    </div>
+                    <div class="col-sm-2">
+                      <button class="form__btn form__btn--transfer">&rarr;</button>
+                    </div>
+                  </div> 
+                </form>
+              </div>
+            <!-- OPERATION: LOAN -->
+            <div class="operation operation--loan my-4">
+              <h2>Request loan</h2>
+              <form class="form form--loan">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <input type="number" class="form__input form__input--loan-amount" />
+                    <label class="form__label form__label--loan">Amount</label>
+                  </div>
 
-      <!-- OPERATION: LOAN -->
-      <div class="operation operation--loan">
-        <h2>Request loan</h2>
-        <form class="form form--loan">
-          <input type="number" class="form__input form__input--loan-amount" />
-          <button class="form__btn form__btn--loan">&rarr;</button>
-          <label class="form__label form__label--loan">Amount</label>
-        </form>
-      </div>
+                  <div class="col-sm-6">
+                    <button class="form__btn form__btn--loan">&rarr;</button>
+                  </div>
+                </div>
+              </form>
+            </div>
 
-      <!-- OPERATION: CLOSE -->
-      <div class="operation operation--close">
-        <h2>Close account</h2>
-        <form class="form form--close">
-          <input type="text" class="form__input form__input--user" />
-          <input
-            type="password"
-            maxlength="6"
-            class="form__input form__input--pin"
-          />
-          <button class="form__btn form__btn--close">&rarr;</button>
-          <label class="form__label">Confirm user</label>
-          <label class="form__label">Confirm PIN</label>
-        </form>
-      </div>
+            <!-- OPERATION: CLOSE -->
+            <div class="operation operation--close my-4">
+              <h2>Close account</h2>
+              <form class="form form--close">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <input type="text" class="form__input form__input--user" />
+                    <label class="form__label">Confirm user</label>
+                  </div>
+                  <div class="col-sm-5">
+                    <input
+                    type="password"
+                    maxlength="6"
+                    class="form__input form__input--pin"
+                  />        
+                <label class="form__label">Confirm PIN</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <button class="form__btn form__btn--close">&rarr;</button>
+                  </div>
+                </div>
+                </form>
+            </div>
 
-      <!-- LOGOUT TIMER -->
-      <p class="logout-timer">
-        You will be logged out in <span class="timer">05:00</span>
-      </p>
-    </main>
+          </div>           
+          </div>
 
-    <footer>
-      
-    </footer>
+          <p class="logout-timer my-5">
+            You will be logged out in <span class="timer">05:00</span>
+          </p> 
+        </main>
 
-    <script src="Bankist.js"></script>
+        <footer class="hidden">
+          <p class="help">To transact with the bankist app, there is a default account(owner's account)
+             with id:GO, feel free to send out of your token 😊🤗</p>           
+        </footer>
+    </div>
+
+    <!-- External script -->
+    <script src="./Bankist.js"></script>
   </body>
 </html>

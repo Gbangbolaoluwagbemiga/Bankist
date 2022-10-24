@@ -4,7 +4,7 @@ const account1 = {
   owner: 'Gbangbola Oluwagbemiga',
   movements: [200, 455.23, -306.5, 25000, -642.21, -133.9, 79.97, 1300],
   interestRate: 1.2, // %
-  pin: 1111,
+  pin: 1701,
 
   movementsDates: [
     '2022-11-18T21:31:17.178Z',
@@ -69,70 +69,12 @@ const hamburger = document.querySelector('.hamsburger');
 const signupName = document.querySelector('.input__signUp--name');
 const formDetails = document.querySelector('.form--details');
 const verifyInputSignUP = document.querySelector('.input__verifysignUp');
-const errorMessage = document.querySelector('.error__message');
+const errorMessage = document.querySelectorAll('.error__message');
 const Login = document.getElementById('log__in');
 const signUp = document.getElementById('sign__up');
 const signUpUrl = document.getElementById('signUp__url');
 
-
-// loooping through icons item
-for (let i = 0; i < icon.length; i++) {
-  icon[i].addEventListener('click', function () {
-    Login.classList.add('hidden');
-    signUp.classList.add('hidden');
-  });
-}
-// looping through the btns
-
-logInUrl.addEventListener('click', function () {
-  Login.classList.remove('hidden');
-  if (!signUp.classList.contains('hidden')) {
-    Login.classList.toggle('hidden');
-  }
-});
-signUpUrl.addEventListener('click', function () {
-  signUp.classList.remove('hidden');
-  if (!Login.classList.contains('hidden')) {
-    signUp.classList.toggle('hidden');
-  }
-});
-
-const verifier = function () {
-  if (
-    inputSignUp.value === verifyInputSignUP.value &&
-    signupName.value !== ''
-  ) {
-    inputSignUp.value = verifyInputSignUP.value = '';
-    signUp.classList.add('hidden');
-    const userFullName = signupName.value;
-    const userId = userFullName
-      .toUpperCase()
-      .split(' ')
-      .map(Name => Name[0])
-      .join('');
-
-    alert(`your user Id is ${userId}`);
-  } else {
-    errorMessage.classList.remove('hidden');
-  }
-};
-SignUpBtn.addEventListener('click', verifier);
-
-let visible = true;
-hamburger.addEventListener('click', function () {
-  if (visible) {
-    formDetails.style.display = 'block';
-    hamIcon.classList.add('hidden');
-    formDetails.classList.remove('col-3');
-    iconDismiss.classList.remove('hidden');
-  } else {
-    formDetails.style.display = 'none';
-    hamIcon.classList.remove('hidden');
-    iconDismiss.classList.add('hidden');
-  }
-  visible = !visible;
-});
-
+// additional elements
 const labelWelcome = document.querySelector('.welcome');
 const labelDate = document.querySelector('.date');
 const labelBalance = document.querySelector('.balance__value');
@@ -157,7 +99,92 @@ const inputTransferTo = document.querySelector('.form__input--to');
 const inputTransferAmount = document.querySelector('.form__input--amount');
 const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
+
+// loooping through icons item
+for (let i = 0; i < icon.length; i++) {
+  icon[i].addEventListener('click', function () {
+    Login.classList.add('hidden');
+    signUp.classList.add('hidden');
+  });
+}
+// looping through the btns
+
+logInUrl.addEventListener('click', function () {
+  Login.classList.remove('hidden');
+  containerApp.style.opacity = 0;
+  if (!signUp.classList.contains('hidden')) {
+    Login.classList.toggle('hidden');
+  }
+});
+signUpUrl.addEventListener('click', function () {
+  signUp.classList.remove('hidden');
+  containerApp.style.opacity = 0;
+  if (!Login.classList.contains('hidden')) {
+    signUp.classList.toggle('hidden');
+  }
+});
+
+const errMessage = function () {
+  for (let i = 0; i < errorMessage.length; i++) {
+    errorMessage[i].classList.remove('hidden');
+  }
+};
+
+const verifier = function () {
+  if (
+    inputSignUp.value !== '' &&
+    inputSignUp.value === verifyInputSignUP.value &&
+    signupName.value !== ''
+  ) {
+    signUp.classList.add('hidden');
+    const userFullName = signupName.value;
+    const userId = userFullName
+      .toUpperCase()
+      .split(' ')
+      .map(Name => Name[0])
+      .join('');
+    const ownerName = signupName.value;
+    const ownerPin = +verifyInputSignUP.value;
+
+    account2.owner = ownerName;
+    account2.pin = ownerPin;
+    account2.userName = userId;
+    alert(`your user Id is ${userId}`);
+    inputSignUp.value = verifyInputSignUP.value = '';
+  } else {
+    errMessage();
+  }
+};
+SignUpBtn.addEventListener('click', function (e) {
+  e.preventDefault();
+  verifier();
+});
+
+let visible = true;
+hamburger.addEventListener('click', function () {
+  if (visible) {
+    formDetails.style.display = 'block';
+    hamIcon.classList.add('hidden');
+    formDetails.classList.remove('col-3');
+    iconDismiss.classList.remove('hidden');
+  } else {
+    formDetails.style.display = 'none';
+    hamIcon.classList.remove('hidden');
+    iconDismiss.classList.add('hidden');
+  }
+  visible = !visible;
+});
+
 const inputClosePin = document.querySelector('.form__input--pin');
+
+const locale = navigator.language;
+
+const formatCur = function (cur, movs) {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: cur,
+  }).format(movs);
+};
 
 const dateMovement = function (date) {
   const calcDays = (curDay, transactDay) =>
@@ -188,12 +215,27 @@ const displayMovements = function (acc, sorted = false) {
 
     const type = movs > 0 ? 'deposit' : 'withdrawal';
     const color = movs > 0 ? '#d0dfd9a9' : '#f8d4d6e1';
-    const html = ` <div class="movements__row" style=background-color:${color}>
+
+    const html = `
+                <div class="row movements__row" style=background-color:${color}>
+                  <div class="col-4 movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
+                  <div class="col-4 movements__date">${currentDate}</div>
+                  <div class="col-4 movements__value">${(formatCur(
+                    account2.currency,
+                    movs
+                  ))}</div>
+                </div>`;
+
+    {
+      /* const html = ` <div class="movements__row" style=background-color:${color}>
     <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
     <div class="movements__date">${currentDate}</div>
     <div class="movements__value">${movs.toFixed(2)}</div>
   </div>
- `;
+ `; */
+    }
 
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
@@ -217,7 +259,7 @@ const calcBalance = function (accs) {
     return acc + movs;
   }, 0);
   const totalBalance = accs.balance;
-  labelBalance.textContent = `${totalBalance.toFixed(2)} EUR`;
+  labelBalance.textContent = `${formatCur(account2.currency, totalBalance)}`;
 };
 
 // Display Total money
@@ -225,16 +267,16 @@ const calcDisplaySummary = function (mov) {
   const income = mov.movements
     .filter(movs => movs > 0)
     .reduce((acc, movs) => acc + movs, 0);
-  labelSumIn.textContent = `${income.toFixed(2)}`;
+  labelSumIn.textContent = `${formatCur(account2.currency,income)}`;
   const outcome = mov.movements
     .filter(movs => movs < 0)
     .reduce((acc, movs) => acc + movs, 0);
-  labelSumOut.textContent = `${Math.abs(outcome).toFixed(2)}`;
+  labelSumOut.textContent = `${(formatCur(account2.currency,outcome))}`;
   const interest = mov.movements
     .filter(movs => movs > 0)
     .map(movs => movs * mov.interestRate)
     .reduce((acc, movs) => acc + movs, 0);
-  labelSumInterest.textContent = `${interest.toFixed(2)}`;
+  labelSumInterest.textContent = `${formatCur(account2.currency,interest)}`;
 };
 
 function updateUI() {
@@ -264,27 +306,29 @@ btnLogin.addEventListener('click', function (e) {
     weekday: 'long',
   };
 
-  const locale = navigator.language;
+ 
   labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(
     dates
   );
-
+  console.log('hi');
   currentAccount = accounts.find(
     acc => acc.userName === inputLoginUsername.value
   );
+  console.log(currentAccount);
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
     containerApp.style.opacity = 100;
-
+    Login.classList.add('hidden');
     labelWelcome.textContent = `You are welcome ${
       currentAccount.owner.split(' ')[0]
     }`;
 
     updateUI();
+  } else {
+    errMessage();
   }
 });
-console.log(currentAccount);
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
   const receiverAcc = accounts.find(
@@ -334,8 +378,10 @@ btnClose.addEventListener('click', function (e) {
     const accountNumber = accounts.findIndex(
       acc => acc.userName === inputCloseUsername.value
     );
-    accounts.splice(accountNumber, 1);
-    containerApp.style.opacity = 0;
+    if (confirm(`Do you want to close ${currentAccount.owner}'s account`)) {
+      accounts.splice(accountNumber, 1);
+      containerApp.style.opacity = 0;
+    }
 
     labelWelcome.textContent = `Log in to get started`;
   } else {
@@ -351,11 +397,3 @@ btnSort.addEventListener('click', function (e) {
   displayMovements(currentAccount, !Sort);
   Sort = !Sort;
 });
-
-loginBtn.addEventListener('click', function () {
-  console.log('hi');
-  Login.classList.add('hidden');
-  containerApp.classList.remove('hidden');
-});
-
-console.log(inputLoginUsername.value);

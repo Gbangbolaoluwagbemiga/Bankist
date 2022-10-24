@@ -1,0 +1,343 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    color: #444;
+    background-color: #f3f3f3;
+  }
+  
+  .welcome {
+    font-size: 1.9rem;
+    font-weight: 500;
+  }
+  
+  .logo {
+    height: 5.25rem;
+  }
+  
+  #sign__up,
+  #log__in {
+    margin: auto;
+    margin-top: 10%;
+    padding: 10px 20px;
+    width: 80%;
+    border: 2px solid rgb(37, 37, 36);
+    border-radius: 5px;
+  }
+  .hidden {
+    display: none;
+  }
+  .visible {
+    display: block;
+  }
+  .input__space {
+    border-radius: 0.75rem;
+    padding: 10px;
+    width: 100%;
+  }
+  .signUp__btn {
+    margin-left: 40%;
+  }
+  #details__btn {
+      border-radius: 0.75rem;  
+      padding: 10px;
+    background-color: rgb(247, 35, 35);
+  }
+  .error__message {
+    color: rgb(247, 35, 35);
+  }
+  
+  .login__url,
+  #signUp__url {
+    color: #333;
+    font-size: 1.15rem;
+    font-weight: 500;
+  }
+  .icon {
+    position: relative;
+    left: 95%;
+    top: -5px;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0px 3px;
+    padding-bottom: 3px;
+    border-radius: 3px;
+    border: 2px solid rgba(0, 0, 0, 0.274);
+    background-color: rgba(255, 255, 255, 0.589);
+  }
+  .icon:hover {
+    font-size: 25px;
+  }
+  a:link {
+    text-decoration: none;
+  }
+  .hamsburger {
+    display: none;
+    cursor: pointer;
+  }
+  .app {
+    position: relative;
+    max-width: 100rem;
+    margin: 4rem auto;
+    /* NOTE This creates the fade in/out anumation */
+    opacity: 0;
+    transition: all 1s;
+  }
+  .movements__row {
+    text-align: end;
+  }
+  .all__icon {
+    font-size: 2rem;
+  }
+  .movements {
+    background-color: #fff;
+    border-radius: 1rem;
+    overflow: auto;
+  }
+  .movements__row {
+    padding: 2.25rem 4rem;
+    border-bottom: 1px solid #eee;
+  }
+  .movements__type {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    border: 0.01rem solid black;
+    border-radius: 1rem;
+    text-align: center;
+    height: 1.5rem;
+  }
+  .movements__type--deposit {
+    background-image: linear-gradient(to top left, #39b385, #9be15d);
+  }
+  
+  .movements__type--withdrawal {
+    background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+  }
+  .movements__value {
+    font-size: 1.5rem;
+  }
+  .operation--transfer {
+    background-image: linear-gradient(to top left, #ffb003, #ffcb03);
+  }
+  
+  .operation--loan {
+    background-image: linear-gradient(to top left, #39b385, #9be15d);
+  }
+  
+  .operation--close {
+    background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+  }
+  
+  h2 {
+    margin-bottom: 0.75rem;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .form__input {
+    width: 100%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.4);
+    font-family: inherit;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #333;
+    padding: -1.75rem 1rem;
+    border-radius: 0.7rem;
+    transition: all 0.3s;
+    margin: 0.25rem;
+  }
+  
+  .form__input:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .form__label {
+    font-size: 1.3rem;
+    text-align: end;
+    padding-left: 00.5rem;
+  }
+  
+  .form__btn {
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.7rem;
+    font-size: 1.8rem;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .form__btn:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  .summary__label {
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  
+  .summary__value {
+    font-size: 1rem;
+    text-align: left;
+  }
+  
+  .summary__value--in,
+  .summary__value--interest {
+    color: #66c873;
+  }
+  
+  .summary__value--out {
+    color: #f5465d;
+  }
+  
+  .btn--sort {
+    margin-left: auto;
+    border: none;
+    background: none;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .logout-timer {
+    padding: 0 0.3rem;
+    margin-top: 1.9rem;
+    text-align: right;
+    font-size: 1.25rem;
+  }
+  
+  .timer {
+    font-weight: 600;
+  }
+  .help{
+      font-size: 01.25rem;
+      font-weight: 600;
+  }
+  .help::selection{
+      background-color: #444;
+      color: #eee;
+  }
+  
+  /* Responsiveness on smaller screens */
+  
+  @media screen and (max-width: 700px) {
+    .welcome {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+  
+    .logo {
+      height: 3rem;
+    }
+  
+    .input__space {
+      border-radius: 0.75rem;
+      width: 90%;
+      margin: 7px;
+      padding: 10px;
+    }
+    .signUp__btn {
+      margin-left: 20%;
+    }
+    .login__url,
+    #signUp__url {
+      display: block;
+      padding: 5px;
+      font-size: 1.25rem;
+    }
+    .form--details {
+      display: none;
+      width: 100%;
+    }
+    .form--details > div {
+      width: 100%;
+      margin: 20px 0px;
+      padding: 20px 0px;
+      background-color: rgba(199, 185, 185, 0.089);
+    }
+    .detail--row {
+      display: block;
+    }
+  
+    .hamsburger {
+      display: block;
+    }
+    .icon__dismiss {
+      position: absolute;
+      top: -10px;
+      font-size: 25px;
+      border: 5px solid rgba(0, 0, 0, 0.014);
+    }
+  
+    .bal__text {
+      text-align: right;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+  
+    .movements__row {
+      padding: 1rem 0rem;
+      border-bottom: 1px solid #eee;
+    }
+  
+    .movements__type {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 500;
+      border: 0.01rem solid black;
+      border-radius: 0.5rem;
+    }
+    .movements__value {
+      font-size: 1.5rem;
+    }
+  
+    .operation {
+      border-radius: 1rem;
+      padding: 1rem 1rem;
+      color: #333;
+      height: 35%;
+    }
+    .operation--loan {
+      height: 25%;
+    }
+  
+    .summary__value {
+      font-size: 1rem;
+      text-align: right;
+    }
+    .summary__label {
+      font-size: 0.75rem;
+    }
+  }
+  
+  /* Responsiveness on large screens */
+  @media screen and (min-width: 1000px) {
+    .bal__text {
+      text-align: end;
+      font-size: 2.5rem;
+      font-weight: 500;
+    }
+    .user__detail {
+      text-align: right;
+    }
+  
+    .operation {
+      border-radius: 1rem;
+      color: #333;
+      padding: 1.25rem;
+      margin: 00.5rem;
+    }
+  
+    .space__occupied {
+      height: 35rem;
+    }
+  }
+  
