@@ -27,29 +27,43 @@
           <div class="col-5">
             <p class="welcome">Log in to get started</p>
           </div>
-          <div class="col-4">
+          <div class="col-2">
             <img src="logo.png" alt="Logo" class="logo" />
           </div>
 
+          <!-- <div class="col-1 hamsburger">
+            <i class="fa-solid fa-bars-staggered ham--icon all__icon"></i>
+            <span class="icon__dismiss hidden all__icon">x</span>
+          </div> -->
+
+          <div class="col-4 form--details">
+            <div class="row detail--row">
+              <div class="col-sm-3 login__url gen__style">
+                <a href="#log__in user__detail">Login</a>
+              </div>
+
+              <div class="col-sm-3 gen__style" id="signUp__url">
+                <a href="#sign__up user__detail">Sign up</a>
+              </div>
+
+              <div class="col-sm-3 gen__style" id="helper__url">
+                <a href="#help">Help</a>
+               </div>
+  
+               <div class="col-sm-3 gen__style">
+                <p>Dark</p>
+               </div>
+  
+
+            </div>
+          </div>
+
+          
           <div class="col-1 hamsburger">
             <i class="fa-solid fa-bars-staggered ham--icon all__icon"></i>
             <span class="icon__dismiss hidden all__icon">x</span>
           </div>
 
-          <div class="col-3 form--details">
-            <div class="row detail--row">
-              <div class="col-sm-4 login__url ">
-                <a href="#log__in user__detail">Login</a>
-              </div>
-
-              <div class="col-sm-4" id="signUp__url">
-                <a href="#sign__up user__detail">Sign up</a>
-              </div>
-
-             
-
-            </div>
-          </div>
         </header>
 
           <!-- signing up -->
@@ -270,8 +284,9 @@
           </p> 
         </main>
 
-        <footer class="hidden">
-          <p class="help">To transact with the bankist app, there is a default account(owner's account)
+        <footer id="helper" class="hidden">
+          <span class="icon all__icon">x</span>
+          <p id="help">To transact with the bankist app, there is a default account(owner's account)
              with id:GO, feel free to send out of your token 😊🤗</p>           
         </footer>
     </div>

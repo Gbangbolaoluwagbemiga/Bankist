@@ -70,9 +70,13 @@ const signupName = document.querySelector('.input__signUp--name');
 const formDetails = document.querySelector('.form--details');
 const verifyInputSignUP = document.querySelector('.input__verifysignUp');
 const errorMessage = document.querySelectorAll('.error__message');
+const sideBar = document.querySelectorAll('.gen__style');
+const sideBarContainer = document.querySelector('.detail--row');
+const helper = document.getElementById('helper');
 const Login = document.getElementById('log__in');
 const signUp = document.getElementById('sign__up');
 const signUpUrl = document.getElementById('signUp__url');
+const helperUrl = document.getElementById('helper__url');
 
 // additional elements
 const labelWelcome = document.querySelector('.welcome');
@@ -105,9 +109,25 @@ for (let i = 0; i < icon.length; i++) {
   icon[i].addEventListener('click', function () {
     Login.classList.add('hidden');
     signUp.classList.add('hidden');
+    helper.classList.add('hidden');
   });
 }
-// looping through the btns
+// looping through the side bar
+const callSidebar = function () {
+  for (let i = 0; i < sideBar.length; i++) {
+    sideBar[i].addEventListener('click', function () {
+      formDetails.style.display = 'none';
+      hamIcon.classList.remove('hidden');
+      iconDismiss.classList.add('hidden');
+    });
+  }
+};
+callSidebar();
+// help function
+helperUrl.addEventListener('click', function () {
+  helper.classList.remove('hidden');
+  console.log('hi');
+});
 
 logInUrl.addEventListener('click', function () {
   Login.classList.remove('hidden');
@@ -222,10 +242,10 @@ const displayMovements = function (acc, sorted = false) {
       i + 1
     } ${type}</div>
                   <div class="col-4 movements__date">${currentDate}</div>
-                  <div class="col-4 movements__value">${(formatCur(
+                  <div class="col-4 movements__value">${formatCur(
                     account2.currency,
                     movs
-                  ))}</div>
+                  )}</div>
                 </div>`;
 
     {
@@ -267,16 +287,16 @@ const calcDisplaySummary = function (mov) {
   const income = mov.movements
     .filter(movs => movs > 0)
     .reduce((acc, movs) => acc + movs, 0);
-  labelSumIn.textContent = `${formatCur(account2.currency,income)}`;
+  labelSumIn.textContent = `${formatCur(account2.currency, income)}`;
   const outcome = mov.movements
     .filter(movs => movs < 0)
     .reduce((acc, movs) => acc + movs, 0);
-  labelSumOut.textContent = `${(formatCur(account2.currency,outcome))}`;
+  labelSumOut.textContent = `${formatCur(account2.currency, outcome)}`;
   const interest = mov.movements
     .filter(movs => movs > 0)
     .map(movs => movs * mov.interestRate)
     .reduce((acc, movs) => acc + movs, 0);
-  labelSumInterest.textContent = `${formatCur(account2.currency,interest)}`;
+  labelSumInterest.textContent = `${formatCur(account2.currency, interest)}`;
 };
 
 function updateUI() {
@@ -306,7 +326,6 @@ btnLogin.addEventListener('click', function (e) {
     weekday: 'long',
   };
 
- 
   labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(
     dates
   );
