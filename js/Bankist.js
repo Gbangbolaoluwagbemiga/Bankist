@@ -27,14 +27,14 @@ const account2 = {
   pin: 2222,
 
   movementsDates: [
-    '2022-11-01T13:15:33.035Z',
-    '2022-11-30T09:48:16.867Z',
-    '2022-12-25T06:04:23.907Z',
-    '2022-01-25T14:18:46.235Z',
-    '2022-02-05T16:33:06.386Z',
+    '2020-02-01T13:15:33.035Z',
+    '2022-01-30T09:48:16.867Z',
+    '2022-02-25T06:04:23.907Z',
+    '2022-04-25T14:18:46.235Z',
+    '2022-01-05T16:33:06.386Z',
     '2022-04-10T14:43:26.374Z',
-    '2022-06-25T18:49:59.371Z',
-    '2022-07-26T12:01:20.894Z',
+    '2022-05-25T18:49:59.371Z',
+    '2022-01-26T12:01:20.894Z',
   ],
   currency: 'USD',
   locale: 'en-US',
@@ -77,6 +77,7 @@ const Login = document.getElementById('log__in');
 const signUp = document.getElementById('sign__up');
 const signUpUrl = document.getElementById('signUp__url');
 const helperUrl = document.getElementById('helper__url');
+const Operations = document.querySelectorAll('.operation');
 
 // additional elements
 const labelWelcome = document.querySelector('.welcome');
@@ -103,45 +104,55 @@ const inputTransferTo = document.querySelector('.form__input--to');
 const inputTransferAmount = document.querySelector('.form__input--amount');
 const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
+const inputClosePin = document.querySelector('.form__input--pin');
 
 // Dark mode
 
 // Targetting of classes and id
-const toggle = document.getElementById("toggler");
-const theme = document.querySelector(".theme");
-const element = document.querySelector(".styling");
-const iconDark = document.querySelector(".icon__dark");
+const toggle = document.getElementById('toggler');
+const theme = document.querySelector('.theme');
+const element = document.querySelector('.styling');
+const iconDark = document.querySelector('.icon__dark');
 
 // function for toggling of color
 const color = () => {
-  element.classList.contains("Color-toggle")
-    ? (theme.style.color = "black")
-    : (theme.style.color = "white");
+  element.classList.contains('Color-toggle')
+    ? (theme.style.color = 'black')
+    : (theme.style.color = 'white');
+};
+
+const colorFilter = () => {
+  if (element.classList.contains('Color-toggle')) {
+    for (let i = 0; i < Operations.length; i++) {
+      Operations[i].style.filter = ` invert(1) hue-rotate(180deg)`;
+      console.log('hi');
+    }
+  }
 };
 
 // function for toggling of text
 const textDisplayed = () => {
-  element.classList.contains("Color-toggle")
-    ? (theme.textContent = "Dark")
-    : (theme.textContent = "Light");
+  element.classList.contains('Color-toggle')
+    ? (theme.textContent = 'Dark')
+    : (theme.textContent = 'Light');
 };
 
 // function for toggling of icon
 const icons = () => {
-  iconDark.innerHTML = "";
-  element.classList.contains("Color-toggle")
+  iconDark.innerHTML = '';
+  element.classList.contains('Color-toggle')
     ? (iconDark.innerHTML = `<i class="fa-solid fa-moon"></i>`)
     : (iconDark.innerHTML = `<i class="fa-solid fa-moon"></i>`);
 };
 
 // Events for controlling the toggle button
-toggle.addEventListener("click", function () {
-  element.classList.toggle("Color-toggle");
+toggle.addEventListener('click', function () {
+  element.classList.toggle('Color-toggle');
   textDisplayed();
   icons();
   color();
+  colorFilter();
 });
-
 
 // loooping through icons item
 for (let i = 0; i < icon.length; i++) {
@@ -232,10 +243,27 @@ hamburger.addEventListener('click', function () {
   }
   visible = !visible;
   callSidebar();
-
 });
 
-const inputClosePin = document.querySelector('.form__input--pin');
+// Timer
+const startLogOutTimer = function () {
+  let time = 120;
+  const timer = setInterval(function () {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+    labelTimer.textContent = `${min}:${sec}`;
+    if (time === 0) {
+      clearInterval(timer);
+      containerApp.style.opacity = 0;
+      labelWelcome.textContent = `Log in to get started`;
+    }
+
+    if (time <= 30) {
+      labelTimer.style.color = ' rgb(247, 35, 35)';
+    }
+    time--;
+  }, 1000);
+};
 
 const locale = navigator.language;
 
@@ -382,7 +410,7 @@ btnLogin.addEventListener('click', function (e) {
     labelWelcome.textContent = `You are welcome ${
       currentAccount.owner.split(' ')[0]
     }`;
-
+    startLogOutTimer();
     updateUI();
   } else {
     errMessage();
@@ -416,15 +444,20 @@ btnTransfer.addEventListener('click', function (e) {
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
   const amount = Math.floor(inputLoanAmount.value);
-  if (currentAccount.movements.some(movs => movs >= amount * 0.1)) {
-    currentAccount.movements.push(amount);
+  if (
+    inputLoanAmount.value !== '' &&
+    currentAccount.movements.some(movs => movs >= amount * 0.1)
+  ) {
+    setTimeout(function () {
+      currentAccount.movements.push(amount);
 
-    const time = new Date();
-    currentAccount?.movementsDates.push(time.toISOString());
+      const time = new Date();
+      currentAccount?.movementsDates.push(time.toISOString());
 
-    inputLoanAmount.value = '';
-    inputLoanAmount.blur();
-    updateUI();
+      inputLoanAmount.value = '';
+      inputLoanAmount.blur();
+      updateUI();
+    }, 3000);
   }
 });
 
