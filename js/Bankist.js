@@ -72,6 +72,8 @@ const verifyInputSignUP = document.querySelector('.input__verifysignUp');
 const errorMessage = document.querySelectorAll('.error__message');
 const sideBar = document.querySelectorAll('.gen__style');
 const sideBarContainer = document.querySelector('.detail--row');
+const helpNotLogin = document.querySelector('.help__not--login');
+const helpLogin = document.querySelector('.help__login');
 const helper = document.getElementById('helper');
 const Login = document.getElementById('log__in');
 const signUp = document.getElementById('sign__up');
@@ -224,6 +226,8 @@ const verifier = function () {
     errMessage();
   }
 };
+helpNotLogin.classList.remove("hidden")
+
 SignUpBtn.addEventListener('click', function (e) {
   e.preventDefault();
   verifier();
@@ -412,6 +416,8 @@ btnLogin.addEventListener('click', function (e) {
     }`;
     startLogOutTimer();
     updateUI();
+    helpLogin.classList.remove("hidden")
+    helpNotLogin.classList.add("hidden")
   } else {
     errMessage();
   }

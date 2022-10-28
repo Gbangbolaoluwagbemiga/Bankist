@@ -339,6 +339,12 @@ h2 {
   .summary__label {
     font-size: 0.75rem;
   }
+  .summary{
+    margin: auto;
+    overflow: auto;
+    display: flex;
+    justify-content: space-around;
+  }
 }
 
 /* Responsiveness on large screens */

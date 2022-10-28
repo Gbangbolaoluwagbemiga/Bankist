@@ -193,9 +193,9 @@
           </div>
 
           <div class="row">
-            <div class="col-sm-7 ">
+            <div class="col-sm-7 px-1">
               <div class="movements space__occupied">
-                <div class="row movements__row">
+                <div class="row movements__row ">
                   <div class="col-4 movements__type movements__type--deposit">2 deposit</div>
                   <div class="col-4 movements__date">3 days ago</div>
                   <div class="col-4 movements__value">4 000€</div>
@@ -212,13 +212,13 @@
             </div>
                 <!-- SUMMARY -->
       <div class="row summary my-4">
-        <p class="col-1  summary__label">In</p>
-        <p class="col-2 summary__value summary__value--in pr-2">0000€</p>
-        <p class="col-1  summary__label">Out</p>
-        <p class="col-2 summary__value summary__value--out">0000€</p>
-        <p class="col-2  summary__label">Interest</p>
-        <p class="col-2 summary__value summary__value--interest">0000€</p>
-        <button class="col-2 btn--sort">&downarrow; SORT</button>
+        <p class="col-sm-1  summary__label">In</p>
+        <p class="col-sm-2 summary__value summary__value--in pr-2">0000€</p>
+        <p class="col-sm-1  summary__label">Out</p>
+        <p class="col-sm-2 summary__value summary__value--out">0000€</p>
+        <p class="col-sm-2  summary__label">Interest</p>
+        <p class="col-sm-2 summary__value summary__value--interest">0000€</p>
+        <button class="col-sm-2 btn--sort">&downarrow; SORT</button>
       </div>
 
           </div>
@@ -293,8 +293,18 @@
 
         <footer id="helper" class="hidden">
           <span class="icon all__icon">x</span>
-          <p id="help">To transact with the bankist app, there is a default account(owner's account)
-             with id:GO, feel free to send out of your token 😊🤗</p>           
+          <ul class="help__not--login hidden">
+            <li>Sign up first, then login with your generated id(uppercase)</li>
+          </ul>
+          <ul id="help" class="help__login hidden">
+           <li>
+             To transact with the bankist app, there is a default account(owner's account)
+              with id:GO, feel free to send out of your token 😊🤗
+            </li> <br>
+            <li>
+              you'll be automatically logged out after 2mins of inactivity
+            </li>
+            </ul>           
         </footer>
     </div>
   </div>
